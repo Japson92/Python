@@ -16,6 +16,13 @@ def trapezeArea(a, b, h):
 def circleArea(r):
     return math.pi * r ** 2
 
+def floatCheck(x):
+    try:
+        float(x)
+        return True
+    except ValueError:
+        return False
+
 AreaMenu = IntEnum('AreaMenu', "Rectangle Square Triangle Trapeze Circle")
 
 while True:
@@ -28,7 +35,7 @@ while True:
             while True:
                 a = input("Insert size of first rectangle side: ")
                 b = input("Insert size of second rectangle side: ")
-                if a.isdigit() and b.isdigit():
+                if floatCheck(a) and floatCheck(b):
                     a = float(a)
                     b = float(b)
                     print("Rectangle area is:", rectangleArea(a, b))
@@ -39,7 +46,7 @@ while True:
         elif (chose == AreaMenu.Square):
             while True:
                 a = input("Insert size of square side: ")
-                if a.isdigit():
+                if floatCheck(a):
                     a = float(a)
                     print("Square area is:", squareArea(a))
                     break
@@ -50,7 +57,7 @@ while True:
             while True:
                 a = input("Insert triangle bottom side size: ")
                 h = input("Insert triangle height: ")
-                if a.isdigit() and h.isdigit():
+                if floatCheck(a) and floatCheck(h):
                     a = float(a)
                     h = float(h)
                     print("Triangle area is:", triangleArea(a, h))
@@ -63,7 +70,7 @@ while True:
                 a = input("Insert shorter side of trapeze: ")
                 b = input("Insert longer side of trapeze: ")
                 h = input("Insert trapeze height: ")
-                if a.isdigit() and b.isdigit() and h.isdigit():
+                if floatCheck(a) and floatCheck(b) and floatCheck(h):
                     a = float(a)
                     b = float(b)
                     h = float(h)
@@ -75,7 +82,7 @@ while True:
         elif (chose == AreaMenu.Circle):
             while True:
                 r = input("Insert circle radius: ")
-                if r.isdigit():
+                if floatCheck(r):
                     r = float(r)
                     print("Rectangle area is:", circleArea(r))
                     break
